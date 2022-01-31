@@ -9,6 +9,12 @@ import {
   signInWithEmailAndPassword,
 } from '../../firebase/firebase.utils';
 
+import {
+  SignInContainer,
+  SignInTitle,
+  ButtonsBarContainer,
+} from './sign-in.styles';
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -40,35 +46,35 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className="sign-in">
-        <h2>I already have an account</h2>
+      <SignInContainer>
+        <SignInTitle>I already have an account</SignInTitle>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
-            type="email"
             name="email"
-            value={this.state.email}
+            type="email"
             handleChange={this.handleChange}
+            value={this.state.email}
             label="email"
             required
           />
           <FormInput
-            type="password"
             name="password"
+            type="password"
             value={this.state.password}
             handleChange={this.handleChange}
             label="password"
             required
           />
-          <div className="buttons">
-            <CustomButton type="submit">Sign In</CustomButton>
+          <ButtonsBarContainer>
+            <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-              Sign In with Google
+              Sign in with Google
             </CustomButton>
-          </div>
+          </ButtonsBarContainer>
         </form>
-      </div>
+      </SignInContainer>
     );
   }
 }
